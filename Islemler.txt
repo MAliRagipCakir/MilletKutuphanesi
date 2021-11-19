@@ -1,0 +1,11 @@
+Login Sayfası
+- KullaniciYoneticisine ihtiyaç var OturumAcma ve KayitOlma işlemleri için.
+- Login sayfası açılrken ve kapanırken jsonSerialize ve jsonDeserialize işlemleri yapmam gerekiyor.
+Verileri kaybetmemek için
+- KayitOl formuna kullaniciYöneticisini göndermeniz gerekiyor.
+
+KayitOl
+- KullaniciYöneticisini almam gerekiyor.
+- Parolalar birbirleriyle eşleşiyorsa kayitOlmak için uygun
+EKSTRA kullanıcılar içerisinde aynı kullanici adına sahip biri varsa
+uyarı verebilir o kayıtı gerçekleştirmesin

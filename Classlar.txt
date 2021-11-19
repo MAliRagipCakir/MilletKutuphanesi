@@ -1,0 +1,25 @@
+Kitap
+- Guid Id
+- string Ad
+- DateTime BasimTarihi 
+- KitapTur KitapTur
+- string YazarAd
+- int SayfaSayisi
+- string Aciklama
+- DateTime? AlinmaTarihi
+KitapTur(Enum)
+- Psikoloji, Fantastik, Tarih, BilimKurgu, Polisiye, Biyografi, Korku, Eğitim
+Kullanici
+- Guid Id
+- string AdSoyad
+- string KullaniciAdi
+- string Parola
+- List<Kitap> OduncAlinanKitaplar
+KullaniciYoneticisi(Kullancilar,OturumAcma ve KayitOlma)
+- List<Kullanici> Kullanicilar
+- void KayitOlma(string adSoyad, string kullaniciAdi, string parola)
+- Kullanici OturumAcma(string kullaniciAdi, string parola)
+KutuphaneYoneticisi(Kitaplar, KitapBagisYapma ve KitapTeslimEtme)
+- List<Kitap> Kitaplar
+- void KitapBagis(Kitap kitap, int adet)
+- void KitapTeslimEtme(Kitap kitap)
