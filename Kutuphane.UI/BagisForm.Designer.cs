@@ -30,7 +30,6 @@ namespace Kutuphane.UI
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtKitapAdi = new System.Windows.Forms.TextBox();
             this.dtpBasimTarihi = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,9 +42,12 @@ namespace Kutuphane.UI
             this.label6 = new System.Windows.Forms.Label();
             this.nudAdet = new System.Windows.Forms.NumericUpDown();
             this.btnBagisYap = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtYazarAd = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudSayfaSayisi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,14 +58,6 @@ namespace Kutuphane.UI
             this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Kitap Adı";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(126, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 96);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // txtKitapAdi
             // 
@@ -90,6 +84,7 @@ namespace Kutuphane.UI
             // 
             // cboKitapTur
             // 
+            this.cboKitapTur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboKitapTur.FormattingEnabled = true;
             this.cboKitapTur.Location = new System.Drawing.Point(113, 216);
             this.cboKitapTur.Name = "cboKitapTur";
@@ -107,15 +102,30 @@ namespace Kutuphane.UI
             // 
             // nudSayfaSayisi
             // 
-            this.nudSayfaSayisi.Location = new System.Drawing.Point(113, 272);
+            this.nudSayfaSayisi.Location = new System.Drawing.Point(113, 324);
+            this.nudSayfaSayisi.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.nudSayfaSayisi.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudSayfaSayisi.Name = "nudSayfaSayisi";
             this.nudSayfaSayisi.Size = new System.Drawing.Size(120, 26);
             this.nudSayfaSayisi.TabIndex = 7;
+            this.nudSayfaSayisi.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 274);
+            this.label4.Location = new System.Drawing.Point(12, 326);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 20);
             this.label4.TabIndex = 6;
@@ -123,7 +133,7 @@ namespace Kutuphane.UI
             // 
             // txtAciklama
             // 
-            this.txtAciklama.Location = new System.Drawing.Point(113, 373);
+            this.txtAciklama.Location = new System.Drawing.Point(113, 425);
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
             this.txtAciklama.Size = new System.Drawing.Size(223, 138);
@@ -132,7 +142,7 @@ namespace Kutuphane.UI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 376);
+            this.label5.Location = new System.Drawing.Point(12, 428);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 20);
             this.label5.TabIndex = 6;
@@ -141,7 +151,7 @@ namespace Kutuphane.UI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 325);
+            this.label6.Location = new System.Drawing.Point(12, 377);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 20);
             this.label6.TabIndex = 6;
@@ -149,25 +159,69 @@ namespace Kutuphane.UI
             // 
             // nudAdet
             // 
-            this.nudAdet.Location = new System.Drawing.Point(113, 323);
+            this.nudAdet.Location = new System.Drawing.Point(113, 375);
+            this.nudAdet.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudAdet.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudAdet.Name = "nudAdet";
             this.nudAdet.Size = new System.Drawing.Size(120, 26);
             this.nudAdet.TabIndex = 9;
+            this.nudAdet.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnBagisYap
             // 
-            this.btnBagisYap.Location = new System.Drawing.Point(217, 526);
+            this.btnBagisYap.Location = new System.Drawing.Point(217, 578);
             this.btnBagisYap.Name = "btnBagisYap";
             this.btnBagisYap.Size = new System.Drawing.Size(119, 34);
             this.btnBagisYap.TabIndex = 10;
             this.btnBagisYap.Text = "Bağış Yap";
             this.btnBagisYap.UseVisualStyleBackColor = true;
+            this.btnBagisYap.Click += new System.EventHandler(this.btnBagisYap_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Kutuphane.UI.Properties.Resources.book;
+            this.pictureBox1.Location = new System.Drawing.Point(126, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(98, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtYazarAd
+            // 
+            this.txtYazarAd.Location = new System.Drawing.Point(113, 268);
+            this.txtYazarAd.Name = "txtYazarAd";
+            this.txtYazarAd.Size = new System.Drawing.Size(120, 26);
+            this.txtYazarAd.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 274);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Yazar Adı";
             // 
             // BagisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 589);
+            this.ClientSize = new System.Drawing.Size(355, 659);
+            this.Controls.Add(this.txtYazarAd);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnBagisYap);
             this.Controls.Add(this.nudAdet);
             this.Controls.Add(this.txtAciklama);
@@ -185,10 +239,11 @@ namespace Kutuphane.UI
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BagisForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BagisForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSayfaSayisi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +265,7 @@ namespace Kutuphane.UI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown nudAdet;
         private System.Windows.Forms.Button btnBagisYap;
+        private System.Windows.Forms.TextBox txtYazarAd;
+        private System.Windows.Forms.Label label7;
     }
 }

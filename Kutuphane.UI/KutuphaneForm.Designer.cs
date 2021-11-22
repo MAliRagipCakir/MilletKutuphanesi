@@ -29,26 +29,31 @@ namespace Kutuphane.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.hesabımToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bağışYapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.çıkışYapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHesabim = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBagisYap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCikisYap = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvKutuphane = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtArama = new System.Windows.Forms.TextBox();
             this.cboTurler = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiKitapOduncAl = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiKitabiImhaEt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKutuphane)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hesabımToolStripMenuItem,
-            this.bağışYapToolStripMenuItem,
-            this.çıkışYapToolStripMenuItem});
+            this.tsmiHesabim,
+            this.tsmiBagisYap,
+            this.tsmiCikisYap});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -56,26 +61,29 @@ namespace Kutuphane.UI
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // hesabımToolStripMenuItem
+            // tsmiHesabim
             // 
-            this.hesabımToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hesabımToolStripMenuItem.Name = "hesabımToolStripMenuItem";
-            this.hesabımToolStripMenuItem.Size = new System.Drawing.Size(83, 25);
-            this.hesabımToolStripMenuItem.Text = "Hesabım";
+            this.tsmiHesabim.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tsmiHesabim.Name = "tsmiHesabim";
+            this.tsmiHesabim.Size = new System.Drawing.Size(83, 25);
+            this.tsmiHesabim.Text = "Hesabım";
+            this.tsmiHesabim.Click += new System.EventHandler(this.tsmiHesabim_Click);
             // 
-            // bağışYapToolStripMenuItem
+            // tsmiBagisYap
             // 
-            this.bağışYapToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.bağışYapToolStripMenuItem.Name = "bağışYapToolStripMenuItem";
-            this.bağışYapToolStripMenuItem.Size = new System.Drawing.Size(88, 25);
-            this.bağışYapToolStripMenuItem.Text = "Bağış Yap";
+            this.tsmiBagisYap.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tsmiBagisYap.Name = "tsmiBagisYap";
+            this.tsmiBagisYap.Size = new System.Drawing.Size(88, 25);
+            this.tsmiBagisYap.Text = "Bağış Yap";
+            this.tsmiBagisYap.Click += new System.EventHandler(this.tsmiBagisYap_Click);
             // 
-            // çıkışYapToolStripMenuItem
+            // tsmiCikisYap
             // 
-            this.çıkışYapToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.çıkışYapToolStripMenuItem.Name = "çıkışYapToolStripMenuItem";
-            this.çıkışYapToolStripMenuItem.Size = new System.Drawing.Size(84, 25);
-            this.çıkışYapToolStripMenuItem.Text = "Çıkış Yap";
+            this.tsmiCikisYap.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tsmiCikisYap.Name = "tsmiCikisYap";
+            this.tsmiCikisYap.Size = new System.Drawing.Size(84, 25);
+            this.tsmiCikisYap.Text = "Çıkış Yap";
+            this.tsmiCikisYap.Click += new System.EventHandler(this.tsmiCikisYap_Click);
             // 
             // label1
             // 
@@ -89,15 +97,23 @@ namespace Kutuphane.UI
             // 
             // dgvKutuphane
             // 
+            this.dgvKutuphane.AllowUserToAddRows = false;
             this.dgvKutuphane.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvKutuphane.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvKutuphane.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvKutuphane.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKutuphane.Location = new System.Drawing.Point(0, 114);
             this.dgvKutuphane.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvKutuphane.MultiSelect = false;
             this.dgvKutuphane.Name = "dgvKutuphane";
+            this.dgvKutuphane.ReadOnly = true;
+            this.dgvKutuphane.RowHeadersVisible = false;
+            this.dgvKutuphane.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKutuphane.Size = new System.Drawing.Size(914, 459);
             this.dgvKutuphane.TabIndex = 2;
+            this.dgvKutuphane.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvKutuphane_MouseClick);
             // 
             // label2
             // 
@@ -119,12 +135,14 @@ namespace Kutuphane.UI
             // 
             // cboTurler
             // 
+            this.cboTurler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTurler.FormattingEnabled = true;
             this.cboTurler.Location = new System.Drawing.Point(664, 46);
             this.cboTurler.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboTurler.Name = "cboTurler";
             this.cboTurler.Size = new System.Drawing.Size(180, 28);
             this.cboTurler.TabIndex = 5;
+            this.cboTurler.SelectedIndexChanged += new System.EventHandler(this.cboTurler_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -135,6 +153,28 @@ namespace Kutuphane.UI
             this.label3.Size = new System.Drawing.Size(49, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Türler";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiKitapOduncAl,
+            this.tsmiKitabiImhaEt});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
+            // 
+            // tsmiKitapOduncAl
+            // 
+            this.tsmiKitapOduncAl.Name = "tsmiKitapOduncAl";
+            this.tsmiKitapOduncAl.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKitapOduncAl.Text = "Kitap Ödünç Al";
+            this.tsmiKitapOduncAl.Click += new System.EventHandler(this.tsmiKitapOduncAl_Click);
+            // 
+            // tsmiKitabiImhaEt
+            // 
+            this.tsmiKitabiImhaEt.Name = "tsmiKitabiImhaEt";
+            this.tsmiKitabiImhaEt.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKitabiImhaEt.Text = "Kitabı İmha Et";
+            this.tsmiKitabiImhaEt.Click += new System.EventHandler(this.tsmiKitabiImhaEt_Click);
             // 
             // KutuphaneForm
             // 
@@ -152,10 +192,13 @@ namespace Kutuphane.UI
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "KutuphaneForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "KutuphaneForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KutuphaneForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKutuphane)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,14 +207,17 @@ namespace Kutuphane.UI
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem hesabımToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bağışYapToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem çıkışYapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHesabim;
+        private System.Windows.Forms.ToolStripMenuItem tsmiBagisYap;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCikisYap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvKutuphane;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtArama;
         private System.Windows.Forms.ComboBox cboTurler;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKitapOduncAl;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKitabiImhaEt;
     }
 }

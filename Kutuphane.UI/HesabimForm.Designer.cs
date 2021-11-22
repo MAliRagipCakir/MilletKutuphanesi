@@ -54,7 +54,7 @@ namespace Kutuphane.UI
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(320, 328);
+            this.groupBox1.Size = new System.Drawing.Size(379, 328);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kullanıcı Bilgileri";
@@ -75,9 +75,9 @@ namespace Kutuphane.UI
             this.lblAdSoyad.Location = new System.Drawing.Point(8, 73);
             this.lblAdSoyad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdSoyad.Name = "lblAdSoyad";
-            this.lblAdSoyad.Size = new System.Drawing.Size(85, 20);
+            this.lblAdSoyad.Size = new System.Drawing.Size(82, 20);
             this.lblAdSoyad.TabIndex = 1;
-            this.lblAdSoyad.Text = "AD Soyad:";
+            this.lblAdSoyad.Text = "Ad Soyad:";
             // 
             // lblKullaniciAd
             // 
@@ -101,23 +101,35 @@ namespace Kutuphane.UI
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnKitapTeslimEt);
             this.groupBox2.Controls.Add(this.dtpSonTeslimTarihi);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.dgvOduncAlinanKitaplar);
-            this.groupBox2.Location = new System.Drawing.Point(345, 18);
+            this.groupBox2.Location = new System.Drawing.Point(404, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(512, 328);
+            this.groupBox2.Size = new System.Drawing.Size(663, 328);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ödünç Alınan Kitaplar";
             // 
             // dgvOduncAlinanKitaplar
             // 
+            this.dgvOduncAlinanKitaplar.AllowUserToAddRows = false;
+            this.dgvOduncAlinanKitaplar.AllowUserToDeleteRows = false;
+            this.dgvOduncAlinanKitaplar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOduncAlinanKitaplar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOduncAlinanKitaplar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOduncAlinanKitaplar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOduncAlinanKitaplar.Location = new System.Drawing.Point(6, 25);
+            this.dgvOduncAlinanKitaplar.MultiSelect = false;
             this.dgvOduncAlinanKitaplar.Name = "dgvOduncAlinanKitaplar";
-            this.dgvOduncAlinanKitaplar.Size = new System.Drawing.Size(500, 221);
+            this.dgvOduncAlinanKitaplar.ReadOnly = true;
+            this.dgvOduncAlinanKitaplar.RowHeadersVisible = false;
+            this.dgvOduncAlinanKitaplar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOduncAlinanKitaplar.Size = new System.Drawing.Size(651, 221);
             this.dgvOduncAlinanKitaplar.TabIndex = 0;
             // 
             // label1
@@ -139,18 +151,20 @@ namespace Kutuphane.UI
             // 
             // btnKitapTeslimEt
             // 
-            this.btnKitapTeslimEt.Location = new System.Drawing.Point(371, 249);
+            this.btnKitapTeslimEt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKitapTeslimEt.Location = new System.Drawing.Point(522, 248);
             this.btnKitapTeslimEt.Name = "btnKitapTeslimEt";
             this.btnKitapTeslimEt.Size = new System.Drawing.Size(135, 29);
             this.btnKitapTeslimEt.TabIndex = 6;
             this.btnKitapTeslimEt.Text = "Kitap Teslim Et";
             this.btnKitapTeslimEt.UseVisualStyleBackColor = true;
+            this.btnKitapTeslimEt.Click += new System.EventHandler(this.btnKitapTeslimEt_Click);
             // 
             // HesabimForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 369);
+            this.ClientSize = new System.Drawing.Size(1079, 369);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
