@@ -76,6 +76,8 @@ namespace Kutuphane.UI
             {
                 MessageBox.Show($"{girisYapan.KullaniciAdi} Hoşgeldiniz!");
                 //TODO: giriş işlemleri sonrası kütüphaneForm açılacak
+                KutuphaneForm kutuphaneForm = new KutuphaneForm();
+                kutuphaneForm.ShowDialog();
             }
 
 
