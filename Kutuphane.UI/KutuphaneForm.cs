@@ -118,9 +118,16 @@ namespace Kutuphane.UI
         private void tsmiHesabim_Click(object sender, EventArgs e)
         {
             HesabimForm hesabimForm = new HesabimForm(girisYapan, khY);
+
+            hesabimForm.KitapTeslimEdildi += HesabimForm_KitapTeslimEdildi;
+
             hesabimForm.ShowDialog();
 
+            DataGuncelle();// Boşa düşmüş olabilir
+        }
 
+        private void HesabimForm_KitapTeslimEdildi()
+        {
             DataGuncelle();
         }
 
@@ -145,9 +152,52 @@ namespace Kutuphane.UI
             DataGuncelle();
         }
 
+
+
         private void cboTurler_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+
+            KitapArama();
+
+        }
+
+        private void KitapArama()
+        {
+            List<Kitap> seciliKitaplar = new List<Kitap>();
+            string aranan = txtArama.Text.Trim();
+
+            seciliKitaplar.Clear();
+
+            if (txtArama.Text != "" && cboTurler.SelectedIndex != 0)
+            {
+                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.StartsWith(aranan) && x.KitapTur == (KitapTur)cboTurler.SelectedItem).ToList();
+
+                dgvKutuphane.DataSource = null;
+                dgvKutuphane.DataSource = seciliKitaplar;
+
+                dgvKutuphane.Columns[0].Visible = false;
+                dgvKutuphane.Columns[7].Visible = false;
+            }
+            else if (txtArama.Text != "")
+            {
+                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.StartsWith(aranan)).ToList();
+
+                dgvKutuphane.DataSource = null;
+                dgvKutuphane.DataSource = seciliKitaplar;
+
+                dgvKutuphane.Columns[0].Visible = false;
+                dgvKutuphane.Columns[7].Visible = false;
+            }
+            else
+            {
+                DataGuncelle();
+            }
+        }
+
+        private void txtArama_TextChanged(object sender, EventArgs e)
+        {
+            KitapArama();
         }
     }
 }

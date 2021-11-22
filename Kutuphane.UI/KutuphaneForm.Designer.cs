@@ -132,6 +132,7 @@ namespace Kutuphane.UI
             this.txtArama.Name = "txtArama";
             this.txtArama.Size = new System.Drawing.Size(148, 26);
             this.txtArama.TabIndex = 4;
+            this.txtArama.TextChanged += new System.EventHandler(this.txtArama_TextChanged);
             // 
             // cboTurler
             // 

@@ -11,12 +11,17 @@ using System.Windows.Forms;
 
 namespace Kutuphane.UI
 {
+    public delegate void KitapTeslimEventHandler();
+
     public partial class HesabimForm : Form
     {
         private readonly Kullanici girisYapan;
         private readonly KutuphaneYoneticisi khY;
 
-        public HesabimForm(Kullanici girisYapan,KutuphaneYoneticisi khY)
+        
+        public event KitapTeslimEventHandler KitapTeslimEdildi;
+
+        public HesabimForm(Kullanici girisYapan, KutuphaneYoneticisi khY)
         {
             this.girisYapan = girisYapan;
             this.khY = khY;
@@ -38,12 +43,13 @@ namespace Kutuphane.UI
 
         private void ListeGuncelle()
         {
+            dgvOduncAlinanKitaplar.DataSource = null;
             dgvOduncAlinanKitaplar.DataSource = girisYapan.OduncAlinanKitaplar;
         }
 
         private void btnKitapTeslimEt_Click(object sender, EventArgs e)
         {
-            if (dgvOduncAlinanKitaplar.SelectedRows.Count==0)
+            if (dgvOduncAlinanKitaplar.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Lütfen teslim edilecek kitabı seçiniz");
                 return;
@@ -51,13 +57,31 @@ namespace Kutuphane.UI
 
             Kitap kitap = (Kitap)dgvOduncAlinanKitaplar.SelectedRows[0].DataBoundItem;
 
-            //TODO burda kaldın
+
             khY.Kitaplar.Add(kitap);
             girisYapan.OduncAlinanKitaplar.Remove(kitap);
 
 
             ListeGuncelle();
 
+            if (KitapTeslimEdildi != null)
+            {
+                KitapTeslimEdildi();
+            }
+
+        }
+
+        private void dgvOduncAlinanKitaplar_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvOduncAlinanKitaplar.SelectedRows.Count == 0)
+            {
+                dtpSonTeslimTarihi.Value = DateTime.Now;
+                return;
+            }
+
+            Kitap kitap = (Kitap)dgvOduncAlinanKitaplar.SelectedRows[0].DataBoundItem;
+            dtpSonTeslimTarihi.Value = (DateTime)kitap.AlinmaTarihi;
+            dtpSonTeslimTarihi.Value = dtpSonTeslimTarihi.Value.AddDays(14);
         }
     }
 }
