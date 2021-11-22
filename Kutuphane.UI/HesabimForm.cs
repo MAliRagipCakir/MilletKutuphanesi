@@ -57,7 +57,7 @@ namespace Kutuphane.UI
 
             Kitap kitap = (Kitap)dgvOduncAlinanKitaplar.SelectedRows[0].DataBoundItem;
 
-
+            
             khY.Kitaplar.Add(kitap);
             girisYapan.OduncAlinanKitaplar.Remove(kitap);
 
@@ -80,7 +80,7 @@ namespace Kutuphane.UI
             }
 
             Kitap kitap = (Kitap)dgvOduncAlinanKitaplar.SelectedRows[0].DataBoundItem;
-            dtpSonTeslimTarihi.Value = (DateTime)kitap.AlinmaTarihi;
+            dtpSonTeslimTarihi.Value = (DateTime)kitap.AlinmaTarihi.Value;
             dtpSonTeslimTarihi.Value = dtpSonTeslimTarihi.Value.AddDays(14);
         }
     }

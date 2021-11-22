@@ -26,13 +26,13 @@ namespace Kutuphane.UI
             InitializeComponent();
             VerileriOku();
             TurEkleme();
-            DataGuncelle(); // Bagis yaptiktan sonra, kitap ödünc aldıktan sonra çalıştırılıcak bu yüzden metodlaştırdık
+            DataGuncelle(khY.Kitaplar); // Bagis yaptiktan sonra, kitap ödünc aldıktan sonra çalıştırılıcak bu yüzden metodlaştırdık
         }
 
-        private void DataGuncelle()
+        private void DataGuncelle(List<Kitap> kitaplar)
         {
             dgvKutuphane.DataSource = null;
-            dgvKutuphane.DataSource = khY.Kitaplar;
+            dgvKutuphane.DataSource = kitaplar;
 
             dgvKutuphane.Columns[0].Visible = false;
             dgvKutuphane.Columns[7].Visible = false;
@@ -96,7 +96,7 @@ namespace Kutuphane.UI
             khY.Kitaplar.Remove(kitap);
 
 
-            DataGuncelle();
+            DataGuncelle(khY.Kitaplar);
         }
 
         private void dgvKutuphane_MouseClick(object sender, MouseEventArgs e)
@@ -123,19 +123,19 @@ namespace Kutuphane.UI
 
             hesabimForm.ShowDialog();
 
-            DataGuncelle();// Boşa düşmüş olabilir
+            DataGuncelle(khY.Kitaplar);// Boşa düşmüş olabilir
         }
 
         private void HesabimForm_KitapTeslimEdildi()
         {
-            DataGuncelle();
+            DataGuncelle(khY.Kitaplar);
         }
 
         private void tsmiBagisYap_Click(object sender, EventArgs e)
         {
             BagisForm bagisForm = new BagisForm(khY);
             bagisForm.ShowDialog();
-            DataGuncelle();
+            DataGuncelle(khY.Kitaplar);
         }
 
         private void tsmiKitabiImhaEt_Click(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace Kutuphane.UI
 
             khY.Kitaplar.Remove(kitap);
 
-            DataGuncelle();
+            DataGuncelle(khY.Kitaplar);
         }
 
 
@@ -165,33 +165,31 @@ namespace Kutuphane.UI
         private void KitapArama()
         {
             List<Kitap> seciliKitaplar = new List<Kitap>();
-            string aranan = txtArama.Text.Trim();
+            string aranan = txtArama.Text.ToLower().Trim();
 
             seciliKitaplar.Clear();
 
             if (txtArama.Text != "" && cboTurler.SelectedIndex != 0)
             {
-                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.StartsWith(aranan) && x.KitapTur == (KitapTur)cboTurler.SelectedItem).ToList();
+                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.ToLower().StartsWith(aranan) && x.KitapTur == (KitapTur)cboTurler.SelectedItem).ToList();
 
-                dgvKutuphane.DataSource = null;
-                dgvKutuphane.DataSource = seciliKitaplar;
+                DataGuncelle(seciliKitaplar);
+            }
+            else if (cboTurler.SelectedIndex != 0)
+            {
+                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.KitapTur == (KitapTur)cboTurler.SelectedItem).ToList();
 
-                dgvKutuphane.Columns[0].Visible = false;
-                dgvKutuphane.Columns[7].Visible = false;
+                DataGuncelle(seciliKitaplar);
             }
             else if (txtArama.Text != "")
             {
-                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.StartsWith(aranan)).ToList();
+                seciliKitaplar = khY.Kitaplar.Select(x => x).Where(x => x.Ad.ToLower().StartsWith(aranan)).ToList();
 
-                dgvKutuphane.DataSource = null;
-                dgvKutuphane.DataSource = seciliKitaplar;
-
-                dgvKutuphane.Columns[0].Visible = false;
-                dgvKutuphane.Columns[7].Visible = false;
+                DataGuncelle(seciliKitaplar);
             }
             else
             {
-                DataGuncelle();
+                DataGuncelle(khY.Kitaplar);
             }
         }
 
