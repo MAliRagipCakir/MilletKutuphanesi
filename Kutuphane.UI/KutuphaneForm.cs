@@ -110,6 +110,8 @@ namespace Kutuphane.UI
                 {
                     contextMenuStrip1.Show(dgvKutuphane, new Point(e.X, e.Y));
 
+
+                    //*****************************************
                     dgvKutuphane.Rows[position].Selected = true;    // Sağ click ile seçili satırı sağ click yapılan satır yapmak için
                 }
             }
@@ -123,7 +125,7 @@ namespace Kutuphane.UI
 
             hesabimForm.ShowDialog();
 
-            DataGuncelle(khY.Kitaplar);// Boşa düşmüş olabilir
+            DataGuncelle(khY.Kitaplar);// Boşa düşmüş olabilir event ile alt form'dan anlık şekilde güncellendiği için kapatınca güncellemeye gerek kalmadı
         }
 
         private void HesabimForm_KitapTeslimEdildi()
@@ -156,10 +158,7 @@ namespace Kutuphane.UI
 
         private void cboTurler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
             KitapArama();
-
         }
 
         private void KitapArama()
